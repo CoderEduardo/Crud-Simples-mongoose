@@ -22,12 +22,36 @@ const novoUsuario = async (req, res) => {
 
 const deletarUsuario = async (req, res) => {
     let id = req.body.id
-    try{
+    try {
         await Usuario.findByIdAndDelete(id)
         res.redirect("/")
-    }catch(erro){
+    } catch (erro) {
 
     }
 }
 
-module.exports = { novoUsuario, mostrarUsuario, deletarUsuario }
+const pagAtualizar = async (req, res) => {
+    let id = req.params.id
+    try{
+        let usuario =  await Usuario.findById(id)
+        res.render("atualizar",{usuario})
+    }catch(erro){
+        res.sendStatus(404)
+    }
+}
+
+const atualizarUsuario = async (req,res)=>{
+    let id = req.body.id
+    let usuario = {
+        nome:req.body.nome,
+        email:req.body.email
+    }
+    try{
+        await Usuario.findByIdAndUpdate(id,usuario)
+        res.redirect("/")
+    }catch(erro){
+        res.sendStatus(400)
+    }
+}
+
+module.exports = { novoUsuario, mostrarUsuario, deletarUsuario, pagAtualizar, atualizarUsuario }

@@ -12,4 +12,8 @@ router.post("/criar",usuarioController.novoUsuario)
 
 router.delete("/",usuarioController.deletarUsuario)
 
+router.get("/atualizar/:id",usuarioController.pagAtualizar)
+
+router.put("/",usuarioController.atualizarUsuario)
+
 module.exports = router
