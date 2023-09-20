@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
 </head>
+
 <body>
-    
+
     <a href="/criar">Criar um novo usuário</a>
 
-    <% if (erro) {%>
-        <script>
-            alert(`Ocorreu um erro na hora de criar um novo usuario: ${erro}`)
-        </script>
-    <% }  %>
+    <% usuarios.forEach(usuario=> { %>
+        <div style="border: solid red; margin: 20px;">
+            <h4><%= usuario.nome %></h4>
+            <h4><%= usuario.email %></h4>
+        </div>
+    <% }); %>
 
 </body>
+
 </html>

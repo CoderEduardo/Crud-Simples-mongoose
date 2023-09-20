@@ -1,14 +1,25 @@
 const Usuario = require("../model/Usuario")
 
-const novoUsuario = async (req,res)=>{
-    let {nome,email} = req.body
+const mostrarUsuario = async (req,res)=>{
     try{
-        let usuario = new Usuario({nome,email})
+        let usuarios = await Usuario.find({})
+        res.render("index",{usuarios})
+    }catch(erro){
+        res.sendStatus(404)
+    }
+} 
+
+
+
+const novoUsuario = async (req, res) => {
+    let { nome, email } = req.body
+    try {
+        let usuario = new Usuario({ nome, email })
         await usuario.save()
         res.redirect("/")
-    }catch(erro){
+    } catch (erro) {
         res.sendStatus(erro)
     }
 }
 
-module.exports = {novoUsuario}
+module.exports = { novoUsuario, mostrarUsuario }
