@@ -12,9 +12,13 @@
     <a href="/criar">Criar um novo usuário</a>
 
     <% usuarios.forEach(usuario=> { %>
-        <div style="border: solid red; margin: 20px;">
+        <div style="border: solid red; margin: 20px; padding: 10px;">
             <h4><%= usuario.nome %></h4>
             <h4><%= usuario.email %></h4>
+            <form method="POST" action="/?_method=DELETE">
+                <button>Deletar</button>
+                <input type="hidden" name="id" value="<%= usuario.id %>">
+            </form>
         </div>
     <% }); %>
 

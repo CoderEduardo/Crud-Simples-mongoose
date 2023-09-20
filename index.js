@@ -3,6 +3,8 @@ const app = express()
 const PORTA = 8080
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
+const methodOverride = require("method-override")
+app.use(methodOverride("_method"))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.set("view engine",'ejs')

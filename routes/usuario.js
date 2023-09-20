@@ -10,4 +10,6 @@ router.get("/criar", (req,res)=>{
 
 router.post("/criar",usuarioController.novoUsuario)
 
+router.delete("/",usuarioController.deletarUsuario)
+
 module.exports = router
