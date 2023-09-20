@@ -9,6 +9,9 @@ app.set("view engine",'ejs')
 app.use(express.static('public'))
 const connection = require("./model/database")
 const Usuario = require("./model/Usuario")
+const usuarioRouter = require("./routes/usuario")
+
+app.use("/", usuarioRouter)
 
 app.listen(PORTA,()=>{
     console.log("Servidor rodando")
